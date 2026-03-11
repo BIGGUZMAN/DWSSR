@@ -4,21 +4,26 @@
  * Module dependencies.
  */
 
+//import { info } from 'console';
+
 var app = require('../app');
 var debug = require('debug')('dwssr:server');
+var info = require('debug')('dwssr-2026a:info');
 var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
+info('🔍 Normalizing port');
 var port = normalizePort(process.env.PORT || '3000');
+info('📄 Port normalized: ' + port);
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
-
+info('Starting server on port' + port)
 var server = http.createServer(app);
 
 /**
@@ -87,4 +92,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  console.log('🔊 Listening on ${bind}')
 }
