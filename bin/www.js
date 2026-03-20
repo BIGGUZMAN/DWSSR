@@ -2,10 +2,13 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('dwssr:server');
-var info = require('debug')('dwssr:info');
-var http = require('http');
+//var app = require('../app');
+import app from '../app.js';
+import createDebug from 'debug';
+import http from 'node:http';
+
+const debug = createDebug('dwssr:server')
+const info = createDebug('dwssr:info')
 
 /**
  * Get port from environment and store in Express.
