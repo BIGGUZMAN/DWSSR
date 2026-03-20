@@ -58,4 +58,4 @@ Documentar los aprints del proyecto que se desarrollara a lo largo del curso
 # 👤 Autor
 
 
-[Guzman Moral Aaron Antonio]
+[Guzman Moran Aaron Antonio]
