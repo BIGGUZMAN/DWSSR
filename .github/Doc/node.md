@@ -37,3 +37,9 @@ Migrar a ESR ofrece las siguientes ventajas
 - Mejorar analisis estatico**
 - Importaciones asincornas con 'import()'
 - Es el futuro del ecosistema
+
+# 👁️‍🗨️Nodemon 
+[Nodemon] (https://.io) es un paquete que actua como 
+un _wrapper_ (envoltorio) para Node.JS
+su funcion es observar archivos en el directorio de tu proyecto 
+y reiniciar automaticamente la aplicacion cuando detecta cambios guardados 
