@@ -6,9 +6,9 @@ import logger from 'morgan';
 import { fileURLToPath } from 'node:url';
 
 // 🔥 Rutas
-import indexRouter from './routes/index.js';
-import usersRouter from './routes/users.js';
-import authorRouter from './routes/author.js';
+import indexRouter from '#routes/index.js';
+import usersRouter from '#routes/users.js';
+import authorRouter from '#routes/author.js';
 
 // 🔥 Recrear __filename y __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
