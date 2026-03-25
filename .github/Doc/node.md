@@ -43,3 +43,11 @@ Migrar a ESR ofrece las siguientes ventajas
 un _wrapper_ (envoltorio) para Node.JS
 su funcion es observar archivos en el directorio de tu proyecto 
 y reiniciar automaticamente la aplicacion cuando detecta cambios guardados 
+
+# ✂️ Aliases 
+
+los **import alisases** tambien conocidos como 
+_path alisases_ o _module aliases_ son atajos o 
+alias que podemos configurar para simplificar 
+la forma en que importamos modulos en nuestra 
+aplicacion. 

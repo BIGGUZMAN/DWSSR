@@ -1,4 +1,4 @@
-import express from 'expressS';
+import express from 'express';
 const router = express.Router();
 
 /* GET author page. */
