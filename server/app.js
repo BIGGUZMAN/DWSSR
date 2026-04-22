@@ -10,7 +10,7 @@ import indexRouter from '#routes/index.js';
 import usersRouter from '#routes/users.js';
 import authorRouter from '#routes/author.js';
 //importando el registrador de helpers
-import { registerViteHelper } from './lib/vite';
+import { registerViteHelper } from './lib/vite.js';
 
 // 🔥 Recrear __filename y __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);

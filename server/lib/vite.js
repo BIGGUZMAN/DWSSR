@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename)
  * en producion: usa los archivos compilados
  * del manifest
  */
-export function viteAssetd() {
+export function viteAssets() {
     const isDev = process.env.NODE_ENV !== 'production'
     const viteDevServer = process.env.VITE_DEV_SERVER || 'http://localhost:5173'
 
@@ -23,7 +23,7 @@ export function viteAssetd() {
         // /main.js Front-end script entry point.
         return `
         <script type="module" src="${viteDevServer}/@vite/client"></script>
-        <script type="module" src="${viteDevServer}/main.js"></script>
+        <script type="module" src="${viteDevServer}/src/main.js"></script> 
         `;
     }
 
@@ -32,8 +32,8 @@ export function viteAssetd() {
     const manifestPath = path.join(__dirname, '..', '..', 'dist', '.vite', 'manifest.json')
 
     //verificando si el manifiesto existe
-    if (fs.existsSync(manifestPath)) {
-        console.warn('Vite manifest no found. Run "npm run build" first');
+    if (!fs.existsSync(manifestPath)) {
+        console.warn('Vite manifest not found. Run "npm run build" first');
         return '';
     }
 
@@ -58,14 +58,13 @@ export function viteAssetd() {
     //CSS file
     if (mainEntry.css) {
         mainEntry.css.forEach(cssFile => {
-            tags += `<script type="stylesheet" src="/${cssFile}"></script>`
+            tags += `<script type="stylesheet" href="/${cssFile}"></script>`
         })
     }
 
     // JS File
 
-    tags += `<script type="module" src="/${mainEntry.file}"></script>`
-    return tags;
+    tags += `<link rel="stylesheet" href="/${cssFile}">`
 
 
 
@@ -75,6 +74,7 @@ export function viteAssetd() {
 
 //Registrar el HELPER
 export function registerViteHelper(hbs) {
-    hbs.registerViteHelper('viteAssets', () => new hbs.safeString(viteAssets)
-    )
+    hbs.registerHelper('viteAssets', () => {
+        return new hbs.SafeString(viteAssets());
+    });
 }
