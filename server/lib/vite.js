@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { PassThrough } from 'node:stream';
+//import { PassThrough } from 'node:stream';
 import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url);
@@ -64,9 +64,9 @@ export function viteAssets() {
 
     // JS File
 
-    tags += `<link rel="stylesheet" href="/${cssFile}">`
+    tags += `< script type = "module" src = "/$mainEntry.file}" ></script >`
 
-
+    return tags;
 
 
 
