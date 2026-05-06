@@ -3,9 +3,9 @@ import globals from "globals";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
-  //ignore builds del front y dependencias 
+  //ignore builds del front y dependencias
   {
-    ignores: ["node_modules/**", "dist/**"]
+    ignores: ["node_modules/**", "dist/**"],
   },
   // backend
   {
@@ -14,8 +14,8 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
-      globals: { ...globals.node }
-    }
+      globals: { ...globals.node },
+    },
   },
   //frontend
   {
@@ -24,7 +24,7 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
-      globals: { ...globals.browser }
-    }
+      globals: { ...globals.browser },
+    },
   },
 ]);

@@ -1,10 +1,7 @@
-body {
-    background: rgb(246, 245, 245);
-    color: rgb(38, 125, 212);
-    padding: 50px;
-}
+@import "tailwindcss";
 
-h1 {
-    color: rgb(111, 133, 241);
-    font-size: 60px;
-}
+@plugin "daisyui/index.js";
+
+/* esta ruta defino la ruta de las plantillas de handlebars */
+
+@source "../../server/views/**/*.hbs";
