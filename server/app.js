@@ -1,16 +1,16 @@
-import createError from 'http-errors';
-import express from 'express';
-import path from 'node:path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import { fileURLToPath } from 'node:url';
-import hbs from 'hbs';
+import createError from "http-errors";
+import express from "express";
+import path from "node:path";
+import cookieParser from "cookie-parser";
+import morgan from "morgan";
+import { fileURLToPath } from "node:url";
+import hbs from "hbs";
 // 🔥 Rutas
-import indexRouter from '#routes/index.js';
-import usersRouter from '#routes/users.js';
-import authorRouter from '#routes/author.js';
+import indexRouter from "#routes/index.js";
+import usersRouter from "#routes/users.js";
+import authorRouter from "#routes/author.js";
 //importando el registrador de helpers
-import { registerViteHelper } from './lib/vite.js';
+import { registerViteHelper } from "./lib/vite.js";
 
 // 🔥 Recrear __filename y __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -19,29 +19,28 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 // 🔹 Configuración de vistas
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-//registrando helpers para el ENGINE 
-registerViteHelper(hbs)
-
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "hbs");
+//registrando helpers para el ENGINE
+registerViteHelper(hbs);
 
 // 🔹 Middlewares
-app.use(logger('dev'));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//archivos estaticos de vite 
+//archivos estaticos de vite
 if (process.env.NODE_ENV == "production") {
-  app.use(express.static(path.join(__dirname, '../dist')));
+  app.use(express.static(path.join(__dirname, "../dist")));
 }
 // 🔥 Archivos estáticos back
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, "../public")));
 
 // 🔹 Rutas
-app.use(['/', '/index'], indexRouter);
-app.use('/users', usersRouter);
-app.use('/author', authorRouter);
+app.use(["/", "/index"], indexRouter);
+app.use("/users", usersRouter);
+app.use("/author", authorRouter);
 
 // 🔹 Manejo de errores 404
 app.use(function (req, res, next) {
@@ -49,13 +48,13 @@ app.use(function (req, res, next) {
 });
 
 // 🔹 Manejo de errores generales
-//eslint-disable-next-line no-unused-vars 
+//eslint-disable-next-line no-unused-vars
 app.use(function (err, req, res, next) {
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   res.status(err.status || 500);
-  res.render('error');
+  res.render("error");
 });
 
 export default app;
