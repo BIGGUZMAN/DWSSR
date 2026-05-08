@@ -3,6 +3,7 @@ import express from "express";
 import path from "node:path";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
+import logger from "./lib/winston.js";
 import { fileURLToPath } from "node:url";
 import hbs from "hbs";
 // 🔥 Rutas
@@ -25,7 +26,17 @@ app.set("view engine", "hbs");
 registerViteHelper(hbs);
 
 // 🔹 Middlewares
-app.use(morgan("dev"));
+
+//Redirigiendo el flujo de logs de morgan
+// a winston
+// morgan -->[logs] -->winston --> transportes
+app.use(
+  morgan("dev", {
+    stream: {
+      write: (message) => logger.http(message.trim()),
+    },
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
