@@ -1,7 +1,17 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@plugin "daisyui/index.js";
+/* Estilos personalizados */
+body {
+  padding: 50px;
+  font:
+    14px "Lucida Grande",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
 
-/* esta ruta defino la ruta de las plantillas de handlebars */
-
-@source "../../server/views/**/*.hbs";
+h1 {
+  color: teal;
+}

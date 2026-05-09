@@ -1,14 +1,14 @@
 body {
-    padding: 50px;
-    font: 14px "lucia Grande", Helvetica;
-
+  padding: 50px;
+  font:
+    14px "lucia Grande",
+    Helvetica;
 }
 
 h1 {
-    color: teal;
+  color: teal;
 }
 
-button,
-p {
-    margin-top: 20px;
+button {
+  margin-top: 20px;
 }

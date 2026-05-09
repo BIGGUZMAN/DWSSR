@@ -11,7 +11,7 @@
     "build": "vite build",
     "preview": "npm run build:front && npm run start",
     "lint": "npm run lint. back && npm run lint:front",
-    "lint:back": "eslint \"server/*/.js\"",
+    "lint:back": "eslint \"server/**/*.js\"",
     "lint:front": "eslint \"src/*/.js\"",
     "lint:fix": "eslint . --fix",
     "clean:logs": "rm -rf ./server/logs/*.log"
@@ -29,18 +29,17 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@tailwindcss/vite": "^4.2.4",
     "autoprefixer": "^10.5.0",
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",
-    "daisyui": "^5.5.19",
-    "eslint": "^10.2.1",
+    "daisyui": "^4.12.24",
+    "eslint": "^10.3.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.5.0",
     "nodemon": "^3.1.14",
-    "postcss": "^8.5.12",
+    "postcss": "^8.5.14",
     "prettier": "^3.8.3",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^3.4.19"
   },
   "imports": {
     "#server/*": "./server/*",

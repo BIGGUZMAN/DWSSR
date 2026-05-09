@@ -1,37 +1,39 @@
-// Importo la funcion de configuracion de vite
-import { defineConfig } from 'vite'
+// Importo la función de configuración de Vite
+import { defineConfig } from "vite";
+
 // Importo un resolvedor de rutas
-import { resolve } from "node:path"
-//import tailwind
-import tailwindcss from "@tailwindcss/vite";
+import { resolve } from "node:path";
 
-// Exportar una instancia de configuracion
+// Exporto la configuración de Vite
 export default defineConfig({
-    //Directorio raiz de los archivos fuente
-    root: 'src',
-    //plugins
-    plugins: [tailwindcss()],
-    //Configuracion del servidor
-    //de desarrollo de front-end
-    server: {
-        port: 5173,
-        strictPort: true
-    },
+  // Directorio raíz del proyecto frontend
+  root: "src",
 
-    //Configuracion del build
-    build: {
-        //Directorio de salida
-        outDir: '../dist',
-        emptyOutDir: true,
-        //Generar un manifiesto
-        manifest: true,
-        rollupOptions: {
-            input: {
-                main: resolve(__dirname, 'src/main.js'),
-            }
-        },
+  // Configuración del servidor de desarrollo
+  server: {
+    port: 5173,
+    strictPort: true,
+  },
 
+  // Configuración del build
+  build: {
+    // Carpeta de salida
+    outDir: "../dist",
+
+    // Limpiar carpeta antes de compilar
+    emptyOutDir: true,
+
+    // Generar manifest para Express
+    manifest: true,
+
+    // Configuración de entradas
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, "src/main.js"),
+      },
     },
-    //Configuracion para desarrollo
-    publicDir: false,
-})
+  },
+
+  // Desactivar carpeta public
+  publicDir: false,
+});
