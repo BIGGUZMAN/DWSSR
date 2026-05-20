@@ -46,23 +46,29 @@ if (process.env.NODE_ENV == "production") {
 // 🔥 Archivos estáticos back
 app.use(express.static(path.join(__dirname, "../public")));
 
-// 🔹 Rutas
+//  Rutas
 app.use(["/", "/index"], indexRouter);
 app.use("/users", usersRouter);
 app.use("/author", authorRouter);
 
-// 🔹 Manejo de errores 404
+// Manejo de errores 404
 app.use(function (req, res, next) {
   logger.warn(`se consulto la ruta no encontrada ${req.originalUrl}`);
   next(createError(404));
 });
 
-// 🔹 Manejo de errores generales
+// Manejo de errores generales
 //eslint-disable-next-line no-unused-vars
 app.use(function (err, req, res, next) {
   logger.error(`Eror: ${err.status || 500} --> ${err.message}`);
   res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+  res.locals.error =
+    req.app.get("env") === "development"
+      ? {
+          status: err.status || 500,
+          stack: err.stack,
+        }
+      : {};
 
   res.status(err.status || 500);
   res.render("error");
