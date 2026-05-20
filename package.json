@@ -1,0 +1,50 @@
+{
+  "name": "dwssr",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "NODE_ENV=production node ./server/bin/www",
+    "dev": "cross-env DEBUG=dwssr:* nodemon ./server/bin/www",
+    "dev:vite": "vite",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:vite\"",
+    "build": "vite build",
+    "preview": "npm run build:front && npm run start",
+    "lint": "npm run lint. back && npm run lint:front",
+    "lint:back": "eslint \"server/**/*.js\"",
+    "lint:front": "eslint \"src/*/.js\"",
+    "lint:fix": "eslint . --fix",
+    "clean:logs": "rm -rf ./logs/*.log"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-handlebars": "^9.0.1",
+    "hbs": "~4.0.4",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "vite": "^7.3.1",
+    "winston": "^3.19.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "autoprefixer": "^10.5.0",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "daisyui": "^4.12.24",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.5.0",
+    "nodemon": "^3.1.14",
+    "postcss": "^8.5.14",
+    "prettier": "^3.8.3",
+    "tailwindcss": "^3.4.19"
+  },
+  "imports": {
+    "#server/*": "./server/*",
+    "#routes/*": "./server/routes/*",
+    "#routes/index.js": "./server/routes/index.js"
+  }
+}
