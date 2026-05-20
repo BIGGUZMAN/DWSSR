@@ -5,13 +5,15 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import logger from "./lib/winston.js";
 import { fileURLToPath } from "node:url";
-import hbs from "hbs";
+
 // 🔥 Rutas
 import indexRouter from "#routes/index.js";
 import usersRouter from "#routes/users.js";
 import authorRouter from "#routes/author.js";
 //importando el registrador de helpers
-import { registerViteHelper } from "./lib/vite.js";
+
+//importando el configurados de handlebars
+import { configureHandlebars } from "./lib/handlebars.js";
 
 // 🔥 Recrear __filename y __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -19,12 +21,7 @@ const __dirname = path.dirname(__filename);
 
 logger.info("inicia configuracion de express");
 const app = express();
-
-// 🔹 Configuración de vistas
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "hbs");
-//registrando helpers para el ENGINE
-registerViteHelper(hbs);
+configureHandlebars(app);
 
 // 🔹 Middlewares
 
